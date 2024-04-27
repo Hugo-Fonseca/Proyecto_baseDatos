@@ -1,27 +1,26 @@
 <?php
-$host = 'localhost';
-$db = 'facturacion_tienda_db';
-$user = 'tendero@tend.com';
-$pass = '123456td';
+include 'models/Model.php';
+include 'models/Contacto.php';
+include 'controllers/dataBaseController.php';
+include 'controllers/facturaController.php';
 
-$conn = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+use App\controllers\facturaController;
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-
-    $stmt = $conn->prepare("SELECT password FROM usuarios WHERE username = ?");
-    $stmt->execute([$username]);
-    $stored_password = $stmt->fetchColumn();
-
-    if ($stored_password && password_verify($password, $stored_password)) {
-       
-        header("Location: pagina_principal.php");
-        exit();
-    } else {
-        echo "Nombre de usuario o contraseña incorrectos.";
-    }
-}
+$controller = new facturaController();
+$usuario = $controller->read();
 ?>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos</title>
+</head>
+
+<body>
+    <h1>Lista de contactos</h1>
+    
+</body>
+
+</html>
