@@ -1,26 +1,20 @@
-<?php
-include 'models/Model.php';
-include 'models/Contacto.php';
-include 'controllers/dataBaseController.php';
-include 'controllers/facturaController.php';
 
-use App\controllers\facturaController;
-
-$controller = new facturaController();
-$usuario = $controller->read();
-?>
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contactos</title>
+    <title>Inicio</title>
 </head>
-
 <body>
-    <h1>Lista de contactos</h1>
-    
+    <form action="views/validarInicioSesion.php" method="post">
+        <label for="">Usuario</label>
+        <input type="text" name="user" required>
+        <br>
+        <label for="">Contraseña</label>
+        <input type="password" name="pwd" required>
+        <br>
+        <button type="submit">Inicar Sesión</button>
+    </form>
 </body>
-
 </html>

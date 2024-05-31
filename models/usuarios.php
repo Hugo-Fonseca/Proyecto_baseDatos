@@ -1,8 +1,7 @@
 <?php
-
 namespace App\models;
 
-class Contacto extends Model
+class Usuario extends Model
 {
     protected $id = 0;
     protected $usuario = '';

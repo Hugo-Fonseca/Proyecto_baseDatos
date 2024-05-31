@@ -7,8 +7,8 @@ use mysqli;
 class DataBaseController
 {
     private $host = 'localhost';
-    private $user = 'tendero@ten.com';
-    private $pwd = '12345ten';
+    private $user = 'root';
+    private $pwd = '';
     private $db = 'facturacion_tienda_db';
     private $conex;
 
@@ -26,6 +26,11 @@ class DataBaseController
     {
         return $this->conex->query($sql);
     }
+
+    /*function prepare($sql)
+    {
+        return $this->conex->prepare($sql);
+    }*/
 
     function close()
     {
