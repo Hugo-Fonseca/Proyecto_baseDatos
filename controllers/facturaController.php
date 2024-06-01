@@ -1,29 +1,46 @@
 <?php
+
+namespace App\controllers;
+
+use App\models\Factura;
 use App\controllers\DataBaseController;
-require_once '../database.php';
-require_once '../models/Factura.php';
 
-$db = conectar();
-$facturaModel = new DataBaseController($db);
+class FacturaController
+{
+    private $db;
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $clienteId = $_POST['cliente_id'];
-    $productos = $_POST['productos'];
-    $total = $_POST['total'];
-    $descuento = $_POST['descuento'];
+    public function __construct()
+    {
+        $this->db = new DataBaseController();
+    }
 
-    $facturaId = $facturaModel->crearFactura($clienteId, $productos, $total, $descuento);
+    public function guardarFactura($facturaData)
+    {
+        $factura = new Factura(
+            $facturaData['cliente_id'],
+            $facturaData['descuento'],
+            $facturaData['valor_factura']
+        );
 
-    if ($facturaId) {
-        header('Location: ../views/ver_factura.php?id=' . $facturaId);
-    } else {
-        echo "Error al crear la factura.";
+        $sql = "INSERT INTO facturas (fecha, idCliente, descuento, valorFactura, estado)
+                VALUES (
+                    NOW(), 
+                    '{$factura->getClienteId()}', 
+                    '{$factura->getDescuento()}', 
+                    '{$factura->getValorFactura()}', 
+                    '{$factura->getEstado()}'
+                )";
+
+        $this->db->execSql($sql);
+        return $this->db->conex->insert_id;
+    }
+
+    public function obtenerFactura($id)
+    {
+        $sql = "SELECT * FROM facturas WHERE id = '$id'";
+        $result = $this->db->execSql($sql);
+        return $result->fetch_assoc();
     }
 }
-
-if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
-    $facturaId = $_GET['id'];
-    $factura = $facturaModel->obtenerFactura($facturaId);
-    $productos = $facturaModel->obtenerProductosPorFactura($facturaId);
-}
 ?>
+

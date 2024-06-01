@@ -2,12 +2,26 @@
 
 namespace App\models;
 
-class Contacto extends Model
+class Cliente extends Model
 {
-    protected $id = 0;
-    protected $nombreCompleto = '';
-    protected $tipoDocumento = '';
-    protected $numeroDocumento = '';
-    protected $email = '';
-    protected $telefono = '';
+    protected $id;
+    protected $nombreCompleto;
+    protected $tipoDocumento;
+    protected $numeroDocumento;
+    protected $email;
+    protected $telefono;
+
+    // Constructor
+    public function __construct($nombreCompleto, $tipoDocumento, $numeroDocumento, $email, $telefono)
+    {
+        $this->nombreCompleto = $nombreCompleto;
+        $this->tipoDocumento = $tipoDocumento;
+        $this->numeroDocumento = $numeroDocumento;
+        $this->email = $email;
+        $this->telefono = $telefono;
+    }
+
+    // Otros métodos de la clase Cliente...
 }
+
+?>

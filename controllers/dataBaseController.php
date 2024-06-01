@@ -10,7 +10,7 @@ class DataBaseController
     private $user = 'root';
     private $pwd = '';
     private $db = 'facturacion_tienda_db';
-    private $conex;
+    public $conex;
 
     function __construct()
     {
@@ -20,6 +20,9 @@ class DataBaseController
             $this->pwd,
             $this->db
         );
+        if ($this->conex->connect_error) {
+            die("Connection failed: " . $this->conex->connect_error);
+        }
     }
 
     function execSql($sql)
@@ -27,13 +30,9 @@ class DataBaseController
         return $this->conex->query($sql);
     }
 
-    /*function prepare($sql)
-    {
-        return $this->conex->prepare($sql);
-    }*/
-
     function close()
     {
         $this->conex->close();
     }
 }
+?>

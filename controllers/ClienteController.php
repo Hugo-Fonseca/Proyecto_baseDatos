@@ -1,26 +1,28 @@
 <?php
-use App\controllers\DataBaseController;
-require_once '../database.php';
-require_once '../models/cliente.php';
+namespace App\controllers;
 
-$db = DataBaseController();
-$clienteModel = new DataBaseController($db);
+require_once '../models/Cliente.php'; // Asegúrate de que la ruta sea correcta
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nombre = $_POST['nombre'];
-    $documento = $_POST['documento'];
-    $tipoDocumento = $_POST['tipo_documento'];
-    $telefono = $_POST['telefono'];
-    $email = $_POST['email'];
+use App\models\Cliente; // Asegúrate de que el espacio de nombres sea correcto
 
-    $cliente = $clienteModel->obtenerClientePorDocumento($documento);
+class ClienteController
+{
+    private $db;
 
-    if ($cliente) {
-        $clienteModel->actualizarCliente($cliente['id'], $nombre, $documento, $tipoDocumento, $telefono, $email);
-    } else {
-        $clienteModel->registrarCliente($nombre, $documento, $tipoDocumento, $telefono, $email);
+    public function __construct()
+    {
+        $this->db = new DataBaseController();
     }
 
-    header('Location: ../views/crear_factura.php');
+    public function guardarCliente($clienteData)
+    {
+        $nombreCompleto = $clienteData['nombreCompleto'];
+        $tipoDocumento = $clienteData['tipoDocumento'];
+        $numeroDocumento = $clienteData['numeroDocumento'];
+        $email = $clienteData['email'];
+        $telefono = $clienteData['telefono'];
+
+        // Resto del código...
+    }
 }
 ?>
