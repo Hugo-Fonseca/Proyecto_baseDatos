@@ -9,7 +9,7 @@ class DataBaseController
     private $user = 'root';
     private $pwd = '';
     private $db = 'facturacion_tienda_db';
-    private $conex;
+    public $conex;
 
     public function __construct()
     {

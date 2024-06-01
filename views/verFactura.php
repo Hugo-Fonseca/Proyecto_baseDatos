@@ -14,21 +14,26 @@ use App\controllers\ClienteController;
 $facturaController = new FacturaController();
 $clienteController = new ClienteController();
 
-$facturaId = $_GET['id'];
-$factura = $facturaController->obtenerFactura($facturaId);
-$cliente = $clienteController->obtenerCliente($factura->getIdCliente());
+if(isset($_GET['id'])) {
+    $facturaId = $_GET['id'];
+    $factura = $facturaController->obtenerFactura($facturaId);
+    $cliente = $clienteController->obtenerCliente($factura->getIdCliente());
+} else {
+    echo "Error: No se ha proporcionado un ID de factura.";
+    exit();
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Ver Factura</title>
+    <title>Detalle de Factura</title>
 </head>
 <body>
     <h2>Detalle de la Factura</h2>
     <p><strong>Número de Referencia:</strong> <?php echo $factura->getReferencia(); ?></p>
     <p><strong>Fecha de Compra:</strong> <?php echo $factura->getFecha(); ?></p>
-    <p><strong>Descuento:</strong> <?php echo $factura->getDescuento(); ?></p>
     <fieldset>
         <legend>Información del Cliente</legend>
         <p><strong>Nombre:</strong> <?php echo $cliente->getNombreCompleto(); ?></p>
@@ -39,5 +44,6 @@ $cliente = $clienteController->obtenerCliente($factura->getIdCliente());
     </fieldset>
     <p><strong>Descuento:</strong> <?php echo $factura->getDescuento(); ?>%</p>
     <p><strong>Total a Pagar:</strong> $<?php echo $factura->getValorFactura() * (1 - $factura->getDescuento() / 100); ?></p>
+    <p><a href="../views/principal.php">Volver a la página principal</a></p>
 </body>
 </html>

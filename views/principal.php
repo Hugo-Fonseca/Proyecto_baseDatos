@@ -41,7 +41,7 @@ $facturas = $facturaController->obtenerTodasLasFacturas();
         <?php endforeach; ?>
     </table>
     <br>
-    <button onclick="window.location.href='ingresarCliente.php'">Crear Nuevo Cliente</button>
+    <button onclick="window.location.href='cliente.php'">Crear Nuevo Cliente</button>
     <button onclick="window.location.href='modificarFactura.php'">Modificar Tabla</button>
     <button onclick="window.location.href='cerrarSesion.php'">Cerrar Sesión</button>
 </body>

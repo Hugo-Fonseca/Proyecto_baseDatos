@@ -16,11 +16,8 @@
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required><br><br>
         <label for="telefono">Teléfono:</label>
-        <input type="text" id="telefono" name="telefono" required><br><br>
-        <h2>Ingresar Factura</h2>
-        <label for="valorFactura">Valor Factura:</label>
-        <input type="number" id="valorFactura" name="valorFactura" required><br><br>
-        <input type="submit" value="Guardar">
+        <input type="tel" id="telefono" name="telefono" required><br><br>
+        <input type="submit" value="Guardar Cliente">
     </form>
 </body>
 </html>
