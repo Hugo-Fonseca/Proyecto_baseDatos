@@ -1,14 +1,30 @@
 <?php
-
 namespace App\models;
 
-class Cliente extends Model
+class Cliente
 {
-    protected $id = 0;
-    protected $nombreCompleto = '';
-    protected $tipoDocumento = '';
-    protected $numeroDocumento = '';
-    protected $email = '';
-    protected $telefono = '';
+    private $id;
+    private $nombreCompleto;
+    private $tipoDocumento;
+    private $numeroDocumento;
+    private $email;
+    private $telefono;
+
+    public function __construct($nombreCompleto, $tipoDocumento, $numeroDocumento, $email, $telefono, $id = null)
+    {
+        $this->nombreCompleto = $nombreCompleto;
+        $this->tipoDocumento = $tipoDocumento;
+        $this->numeroDocumento = $numeroDocumento;
+        $this->email = $email;
+        $this->telefono = $telefono;
+        $this->id = $id;
+    }
+
+    public function getId() { return $this->id; }
+    public function getNombreCompleto() { return $this->nombreCompleto; }
+    public function getTipoDocumento() { return $this->tipoDocumento; }
+    public function getNumeroDocumento() { return $this->numeroDocumento; }
+    public function getEmail() { return $this->email; }
+    public function getTelefono() { return $this->telefono; }
 }
 ?>

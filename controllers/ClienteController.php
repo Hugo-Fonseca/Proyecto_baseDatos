@@ -1,10 +1,11 @@
 <?php
+
 namespace App\controllers;
 
-require_once '../models/Cliente.php'; // Asegúrate de que la ruta sea correcta
+require_once '../models/Cliente.php';
+require_once 'DataBaseController.php';
 
-use App\models\Cliente; // Asegúrate de que el espacio de nombres sea correcto
-
+use App\models\Cliente;
 class ClienteController
 {
     private $db;
@@ -14,15 +15,42 @@ class ClienteController
         $this->db = new DataBaseController();
     }
 
-    public function guardarCliente($clienteData)
+    public function guardarCliente($data)
     {
-        $nombreCompleto = $clienteData['nombreCompleto'];
-        $tipoDocumento = $clienteData['tipoDocumento'];
-        $numeroDocumento = $clienteData['numeroDocumento'];
-        $email = $clienteData['email'];
-        $telefono = $clienteData['telefono'];
+        $cliente = new Cliente(
+            $data['nombreCompleto'],
+            $data['tipoDocumento'],
+            $data['numeroDocumento'],
+            $data['email'],
+            $data['telefono']
+        );
 
-        // Resto del código...
+        $sql = "INSERT INTO clientes (nombreCompleto, tipoDocumento, numeroDocumento, email, telefono) VALUES (
+            '{$cliente->getNombreCompleto()}',
+            '{$cliente->getTipoDocumento()}',
+            '{$cliente->getNumeroDocumento()}',
+            '{$cliente->getEmail()}',
+            '{$cliente->getTelefono()}'
+        )";
+
+        $this->db->execSql($sql);
+        return $this->db->conex->insert_id;
+    }
+
+    public function obtenerCliente($id)
+    {
+        $sql = "SELECT * FROM clientes WHERE id = '$id'";
+        $result = $this->db->execSql($sql);
+        $data = $result->fetch_assoc();
+
+        return new Cliente(
+            $data['nombreCompleto'],
+            $data['tipoDocumento'],
+            $data['numeroDocumento'],
+            $data['email'],
+            $data['telefono'],
+            $data['id']
+        );
     }
 }
 ?>

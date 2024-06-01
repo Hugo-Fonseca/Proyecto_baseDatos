@@ -3,16 +3,15 @@
 namespace App\controllers;
 
 use mysqli;
-
 class DataBaseController
 {
     private $host = 'localhost';
     private $user = 'root';
     private $pwd = '';
     private $db = 'facturacion_tienda_db';
-    public $conex;
+    private $conex;
 
-    function __construct()
+    public function __construct()
     {
         $this->conex = new mysqli(
             $this->host,
@@ -20,9 +19,6 @@ class DataBaseController
             $this->pwd,
             $this->db
         );
-        if ($this->conex->connect_error) {
-            die("Connection failed: " . $this->conex->connect_error);
-        }
     }
 
     function execSql($sql)
@@ -35,4 +31,3 @@ class DataBaseController
         $this->conex->close();
     }
 }
-?>

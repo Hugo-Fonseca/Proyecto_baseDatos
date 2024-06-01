@@ -1,10 +1,18 @@
 <?php
 namespace App\models;
 
-class Usuario extends Model
+class Usuario
 {
-    protected $id = 0;
-    protected $usuario = '';
-    protected $pwd = '';
+    private $usuario;
+    private $pwd;
+
+    public function __construct($usuario, $pwd)
+    {
+        $this->usuario = $usuario;
+        $this->pwd = $pwd;
+    }
+
+    public function getUsuario() { return $this->usuario; }
+    public function getPwd() { return $this->pwd; }
 }
 ?>

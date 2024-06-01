@@ -2,18 +2,16 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Inicio de Sesión</title>
 </head>
 <body>
+    <h2>Inicio de Sesión</h2>
     <form action="views/validarInicioSesion.php" method="post">
-        <label for="user">Usuario</label>
-        <input type="text" name="user" required>
-        <br>
-        <label for="pwd">Contraseña</label>
-        <input type="password" name="pwd" required>
-        <br>
-        <button type="submit">Iniciar Sesión</button>
+        <label for="user">Usuario:</label>
+        <input type="text" id="user" name="user" required><br><br>
+        <label for="pwd">Contraseña:</label>
+        <input type="password" id="pwd" name="pwd" required><br><br>
+        <input type="submit" value="Iniciar Sesión">
     </form>
 </body>
 </html>
