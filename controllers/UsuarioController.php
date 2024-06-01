@@ -1,32 +1,41 @@
 <?php
-namespace App\controllers;
+namespace app\controllers;
 
-require_once '../models/Usuario.php';
-require_once 'DataBaseController.php';
+require_once '../controllers/DatabaseController.php';  
+require_once '../models/model.php';  
 
-use App\models\Usuario;
+use app\models\Usuario;
 
-class UsuarioController
-{
-    private $db;
+class UsuarioController {
+    function validarInicioSesion($usuario) {
+        $db = new DataBaseController();
+        $u = $usuario->get('usuario');
+        $p = $usuario->get('pwd');
+        $sql = "SELECT * FROM usuarios WHERE usuario = '$u' AND pwd = '$p'";
+        $resultado = $db->execSql($sql);
+        // Preparar y ejecutar la consulta
+        // $stmt = $db->prepare("SELECT * FROM usuarios WHERE usuario = ? AND pwd = ?");
+        // $stmt->bind_param("ss", $usuario->get('usuario'), $usuario->get('pwd'));
+        // $stmt->execute();
 
-    public function __construct()
-    {
-        $this->db = new DataBaseController();
-    }
-
-    public function validarInicioSesion($usuario)
-    {
-        $username = $usuario->get('usuario');
-        $password = $usuario->get('pwd');
-
-        $sql = "SELECT * FROM usuarios WHERE usuario = '$username' AND pwd = '$password'";
-        $result = $this->db->execSql($sql);
-
-        if ($result->num_rows > 0) {
+        // $resultado = $stmt->get_result();
+        
+        if ($resultado->num_rows > 0) {
+            // $stmt->close();
+            $db->close();
             return true;
         } else {
+            // $stmt->close();
+            $db->close();
             return false;
+        }
+    }
+
+    function validarSession() {
+        session_start();
+        if (empty($_SESSION['iniciarSesion'])) {
+            header('Location: ../index.php');
+            exit();  
         }
     }
 }

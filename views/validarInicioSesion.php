@@ -1,26 +1,21 @@
 <?php
-
-require '../models/Usuario.php'; // Asegúrate de que la ruta sea correcta
-require '../controllers/UsuarioController.php'; // Asegúrate de que la ruta sea correcta
+require '../models/Usuario.php';
+require '../controllers/UsuarioController.php';
 
 use App\models\Usuario;
 use App\controllers\UsuarioController;
 
-// Recibe los datos del formulario
-$user = $_POST['user'];
-$pwd = $_POST['pwd'];
-
-// Crea una nueva instancia de la clase Usuario
-$usuario = new Usuario($user, $pwd);
-
-// Llama al controlador para procesar la autenticación del usuario
-$usuarioController = new UsuarioController();
-$iniciarSesion = $usuarioController->validarInicioSesion($usuario);
+$usuario = new Usuario();
+$usuario->setUsuario($_POST['user']);
+$usuario->setPwd($_POST['pwd']);
+$controlador = new UsuarioController();
+$iniciarSesion = $controlador->validarInicioSesion($usuario);
 
 if ($iniciarSesion) {
     session_start();
-    $_SESSION['usuario'] = $_POST['user'];
+    $_SESSION['iniciarSesion'] = true;
     header('Location: ingresarCliente.php');
+    exit();
 } else {
     echo '<h1>Datos Incorrectos</h1>';
     echo '<br>';
