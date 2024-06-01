@@ -3,7 +3,6 @@
 namespace App\controllers;
 
 use mysqli;
-
 class DataBaseController
 {
     private $host = 'localhost';
@@ -20,25 +19,15 @@ class DataBaseController
             $this->pwd,
             $this->db
         );
-        
-        if ($this->conex->connect_error) {
-            die("Connection failed: " . $this->conex->connect_error);
-        }
     }
 
-    public function execSql($sql)
+    function execSql($sql)
     {
-         $this->conex->query($sql);
+        return $this->conex->query($sql);
     }
 
-    public function getInsertId()
-    {
-        return $this->conex->insert_id;
-    }
-
-    public function close()
+    function close()
     {
         $this->conex->close();
     }
 }
-?>

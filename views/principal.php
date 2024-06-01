@@ -31,7 +31,7 @@ $facturas = $facturaController->obtenerTodasLasFacturas();
         </tr>
         <?php foreach ($facturas as $factura): ?>
             <tr>
-                <td><?php echo $factura->getReferencia(); ?></td>
+                <td><?php echo $factura->getRefencia(); ?></td>
                 <td><?php echo $factura->getFecha(); ?></td>
                 <td><?php echo $factura->getIdCliente(); ?></td>
                 <td><?php echo $factura->getDescuento(); ?>%</td>
