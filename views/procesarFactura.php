@@ -11,20 +11,26 @@ use App\controllers\FacturaController;
 
 $facturaController = new FacturaController();
 
-$clienteId = $_POST['cliente_id'];
-$valorFactura = $_POST['valorFactura'];
+if (isset($_POST['cliente_id'])) {
+    $clienteId = $_POST['cliente_id'];
+    $valorFactura = $_POST['valorFactura'];
 
-// Calcular el descuento
-$descuento = $facturaController->calcularDescuento($valorFactura);
+    // Calcular el descuento
+    $descuento = $facturaController->calcularDescuento($valorFactura);
 
-// Guardar la factura
-$facturaData = [
-    'idCliente' => $clienteId,
-    'descuento' => $descuento,
-    'valor_factura' => $valorFactura
-];
-$facturaId = $facturaController->guardarFactura($facturaData);
+    // Guardar la factura
+    $facturaData = [
+        'idCliente' => $clienteId,
+        'descuento' => $descuento,
+        'valor_factura' => $valorFactura
+    ];
+    $facturaReferencia = $facturaController->guardarFactura($facturaData);
 
-header("Location: verFactura.php?id=$facturaId");
-exit();
+    // Redirigir a la página principal
+    header("Location: principal.php");
+    exit();
+} else {
+    echo "Error: No se ha proporcionado un ID de cliente.";
+    exit();
+}
 ?>

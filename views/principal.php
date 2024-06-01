@@ -23,12 +23,11 @@ $facturas = $facturaController->obtenerTodasLasFacturas();
     <h2>Facturas</h2>
     <table border="1">
         <tr>
-            <th>ID</th>
+            <th>Referencia</th>
             <th>Fecha</th>
             <th>Cliente ID</th>
             <th>Descuento</th>
             <th>Valor Factura</th>
-            <th>Estado</th>
         </tr>
         <?php foreach ($facturas as $factura): ?>
             <tr>

@@ -1,28 +1,47 @@
 <?php
+
 namespace App\models;
 
 class Factura
 {
-    protected $referencia;
-    protected $fecha;
-    protected $idCliente;
-    protected $descuento;
-    protected $valorFactura;
+    private $refencia;
+    private $fecha;
+    private $idCliente;
+    private $descuento;
+    private $valorFactura;
 
-    public function __construct($referencia, $fecha, $idCliente, $descuento, $valorFactura)
+    public function __construct($refencia, $fecha, $idCliente, $descuento, $valorFactura)
     {
-        $this->referencia = $referencia;
+        $this->refencia = $refencia;
         $this->fecha = $fecha;
         $this->idCliente = $idCliente;
         $this->descuento = $descuento;
         $this->valorFactura = $valorFactura;
     }
 
-    public function getReferencia() { return $this->referencia; }
-    public function getFecha() { return $this->fecha; }
-    public function getIdCliente() { return $this->idCliente; }
-    public function getDescuento() { return $this->descuento; }
-    public function getValorFactura() { return $this->valorFactura; }
-}
+    public function getRefencia()
+    {
+        return $this->refencia;
+    }
 
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+
+    public function getIdCliente()
+    {
+        return $this->idCliente;
+    }
+
+    public function getDescuento()
+    {
+        return $this->descuento;
+    }
+
+    public function getValorFactura()
+    {
+        return $this->valorFactura;
+    }
+}
 ?>

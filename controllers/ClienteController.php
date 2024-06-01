@@ -6,6 +6,7 @@ require_once '../models/Cliente.php';
 require_once 'DataBaseController.php';
 
 use App\models\Cliente;
+
 class ClienteController
 {
     private $db;
@@ -34,7 +35,7 @@ class ClienteController
         )";
 
         $this->db->execSql($sql);
-        return $this->db->conex->insert_id;
+        return $this->db->getInsertId();
     }
 
     public function obtenerCliente($id)
