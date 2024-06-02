@@ -32,10 +32,8 @@ class FacturaController
 
     public function guardarFactura($facturaData)
 {
-    // Generar una referencia aleatoria única
     $referencia = uniqid();
 
-    // Insertar la factura en la base de datos con la referencia generada
     $sql = "INSERT INTO facturas (refencia, fecha, idCliente, descuento, valorFactura)
             VALUES (
                 '$referencia', 
@@ -46,7 +44,7 @@ class FacturaController
             )";
 
     $this->db->execSql($sql);
-    return $referencia; // Devolver la referencia generada
+    return $referencia; 
 }
 
     public function obtenerTodasLasFacturas()
