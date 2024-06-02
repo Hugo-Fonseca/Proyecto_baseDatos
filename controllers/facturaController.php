@@ -17,7 +17,7 @@ class FacturaController
 
     public function obtenerFactura($id)
     {
-        $sql = "SELECT * FROM facturas WHERE id = '$id'";
+        $sql = "SELECT * FROM facturas WHERE referencia = '$id'";
         $result = $this->db->execSql($sql);
         $data = $result->fetch_assoc();
 
@@ -32,16 +32,21 @@ class FacturaController
 
     public function guardarFactura($facturaData)
 {
-    $sql = "INSERT INTO facturas (fecha, idCliente, descuento, valorFactura)
+    // Generar una referencia aleatoria única
+    $referencia = uniqid();
+
+    // Insertar la factura en la base de datos con la referencia generada
+    $sql = "INSERT INTO facturas (refencia, fecha, idCliente, descuento, valorFactura)
             VALUES (
+                '$referencia', 
                 NOW(), 
                 '{$facturaData['idCliente']}', 
                 '{$facturaData['descuento']}', 
-                '{$facturaData['valor_factura']}'
+                '{$facturaData['valorFactura']}'
             )";
 
     $this->db->execSql($sql);
-    return $this->db->conex->insert_id;
+    return $referencia; // Devolver la referencia generada
 }
 
     public function obtenerTodasLasFacturas()
@@ -65,16 +70,17 @@ class FacturaController
 
     public function calcularDescuento($valorFactura)
     {
+        $descuento = 0;
+
         if ($valorFactura > 650000) {
-            return 8;
+            $descuento = 8;
         } elseif ($valorFactura > 200000) {
-            return 4;
+            $descuento = 4;
         } elseif ($valorFactura > 100000) {
-            return 2;
-        } else {
-            return 0;
+            $descuento = 2;
         }
+
+        return $descuento;
     }
 }
-
 ?>

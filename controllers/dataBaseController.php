@@ -1,8 +1,8 @@
 <?php
-
 namespace App\controllers;
 
 use mysqli;
+
 class DataBaseController
 {
     private $host = 'localhost';
@@ -21,13 +21,19 @@ class DataBaseController
         );
     }
 
-    function execSql($sql)
+    public function execSql($sql)
     {
         return $this->conex->query($sql);
     }
 
-    function close()
+    public function close()
     {
         $this->conex->close();
     }
+
+    public function getInsertId()
+    {
+        return $this->conex->insert_id;
+    }
 }
+?>

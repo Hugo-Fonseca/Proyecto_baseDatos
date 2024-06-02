@@ -32,7 +32,7 @@ if(isset($_GET['id'])) {
 </head>
 <body>
     <h2>Detalle de la Factura</h2>
-    <p><strong>Número de Referencia:</strong> <?php echo $factura->getReferencia(); ?></p>
+    <p><strong>Número de Referencia:</strong> <?php echo $factura->getRefencia(); ?></p>
     <p><strong>Fecha de Compra:</strong> <?php echo $factura->getFecha(); ?></p>
     <fieldset>
         <legend>Información del Cliente</legend>

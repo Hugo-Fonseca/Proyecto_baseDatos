@@ -22,7 +22,7 @@ if (isset($_POST['cliente_id'])) {
     $facturaData = [
         'idCliente' => $clienteId,
         'descuento' => $descuento,
-        'valor_factura' => $valorFactura
+        'valorFactura' => $valorFactura  // Corregido a 'valorFactura'
     ];
     $facturaReferencia = $facturaController->guardarFactura($facturaData);
 
