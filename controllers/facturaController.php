@@ -73,11 +73,9 @@ class FacturaController
         $descuento = 0;
 
         if ($valorFactura > 650000) {
-            $descuento = 8;
-        } elseif ($valorFactura > 200000) {
-            $descuento = 4;
+            $descuento = 10;
         } elseif ($valorFactura > 100000) {
-            $descuento = 2;
+            $descuento = 5;
         }
 
         return $descuento;

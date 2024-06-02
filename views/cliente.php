@@ -10,7 +10,13 @@
         <label for="nombreCompleto">Nombre Completo:</label>
         <input type="text" id="nombreCompleto" name="nombreCompleto" required><br><br>
         <label for="tipoDocumento">Tipo de Documento:</label>
-        <input type="text" id="tipoDocumento" name="tipoDocumento" required><br><br>
+<select id="tipoDocumento" name="tipoDocumento" required>
+    <option value="CC">Cédula Ciudadanía</option>
+    <option value="TI">Tarjeta de Identidad</option>
+    <option value="NIT">NIT</option>
+    <option value="CE">Cédula Extranjería</option>
+    <option value="Otro">Otro</option>
+</select><br><br>
         <label for="numeroDocumento">Número de Documento:</label>
         <input type="text" id="numeroDocumento" name="numeroDocumento" required><br><br>
         <label for="email">Email:</label>
