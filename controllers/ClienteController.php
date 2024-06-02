@@ -53,5 +53,14 @@ class ClienteController
             $data['id']
         );
     }
+
+    public function obtenerNombreCliente($id)
+    {
+        $sql = "SELECT nombreCompleto FROM clientes WHERE id = '$id'";
+        $result = $this->db->execSql($sql);
+        $data = $result->fetch_assoc();
+
+        return $data['nombreCompleto'];
+    }
 }
 ?>

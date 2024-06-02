@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Ingresar Cliente</title>
+    <link rel="stylesheet" href="../styles/estilo.css">
 </head>
-<body>
+<body class="ingresar">
     <h2>Ingresar Cliente</h2>
     <form action="procesarCliente.php" method="post">
         <label for="nombreCompleto">Nombre Completo:</label>

@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body.login {
+    background-color: #b85934; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background-color: #ddc29b;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #b0c0a1;
+    border-radius: 4px;
+}
+
+.login-container input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #6c8f76;
+    border: none;
+    color: rgb(236, 243, 194);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-container input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+body.principal {
+    background-color: #5a7a67; 
+}
+
+.principal h2 {
+    color: #333;
+}
+
+body.ingresar {
+    background-color: #b6b6b2a9;
+    padding: 20px;
+}
+
+.ingresar h2 {
+    color: #333;
+}
+
+.ingresar form {
+    background-color: #c8b4d4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.ingresar form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.ingresar form input[type="text"],
+.ingresar form input[type="number"],
+.ingresar form input[type="email"],
+.ingresar form input[type="submit"],
+.ingresar form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.ingresar form input[type="submit"] {
+    background-color: #87a78e;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.ingresar form input[type="submit"]:hover {
+    background-color: #568f62;
+}

@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Ingresar Factura</title>
+    <link rel="stylesheet" href="../styles/estilo.css">
 </head>
-<body>
+<body class="ingresar">
     <h2>Ingresar Factura</h2>
     <form action="procesarFactura.php" method="post">
         <!-- Campo oculto para cliente_id -->
