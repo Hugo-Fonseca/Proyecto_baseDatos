@@ -21,7 +21,7 @@ $facturas = $facturaController->obtenerTodasLasFacturas();
 <head>
     <meta charset="UTF-8">
     <title>Página Principal</title>
-    <link rel="stylesheet" href="styles/estilo.css">
+    <link rel="stylesheet" href="../styles/estilo.css">
 </head>
 <body class="principal">
     <h2>Facturas</h2>
